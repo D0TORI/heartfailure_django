@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>심부전 예측 사이트</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 35px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        color: black;
+        background: #ffffff;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-family: 'Noto Sans KR', sans-serif;
+        margin-bottom: 20px; /* 메뉴바 아래 여백 추가 */
+        z-index: 1; /* 다른 요소 위에 표시 */
+        border-bottom: 1px solid #ddd; /* 하단 구분선 추가 */
+    }
+
+    /* 왼쪽 텍스트 스타일 */
+    .left {
+        font-size: 20px; /* 원하는 크기로 조정하세요 */
+        padding-left: 60px;
+    }
+
+    .left a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: color 0.3s; /* color 속성에만 transition 추가 */
+    }
+
+    .left a:hover {
+        color: #333; /* 호버 효과 스타일 설정 */
+    }
+
+    /* 오른쪽 메뉴 스타일 */
+    .right ul {
+        list-style: none;
+        padding: 0;
+        margin-right: 40px;
+        display: flex;
+    }
+
+    .right li {
+        margin-right: 20px; /* 각 메뉴 항목 사이의 간격 조정 */
+    }
+
+    .right a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: color 0.3s; /* color 속성에만 transition 추가 */
+    }
+
+    .right a:hover {
+        color: #333; /* 호버 효과 스타일 설정 */
+    }
+
+    main {
+        padding-top: 70px;
+        padding-left: 60px;
+    }
+
+    .context{
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .context li{
+        list-style-type: none;
+    }
+
+    .input-section {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .input-section label {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .input-section select,
+    .input-section input {
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 12px;
+        width: 150px; /* 원하는 크기로 조정하세요 */
+    }
+
+    #submit-btn {
+        padding: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #submit-btn:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
+<header>
+    <div class="left">
+        <a href="/home/">심부전 예측 사이트</a>
+    </div>
+    <div class="right">
+        <ul>
+            <li><a href="/home/credit/">크레딧</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+
+    <form action="submit/" method="post"> <!-- 서버로 데이터를 전송할 경로를 지정하세요 -->
+        {% csrf_token %}
+        <div class="input-section">
+            <label for="Age">Age:</label>
+            <input type="text" id="Age" name="Age">
+
+            <label for="Sex">Sex:</label>
+            <select id="Sex" name="Sex">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+
+            <label for="ChestPainType">Chest Pain Type:</label>
+            <select id="ChestPainType" name="ChestPainType">
+                <option value="TA">Typical Angina</option>
+                <option value="ATA">Atypical Angina</option>
+                <option value="NAP">Non-Anginal Pain</option>
+                <option value="ASY">Asymptomatic</option>
+            </select>
+
+            <label for="Cholesterol">Cholesterol:</label>
+            <input type="text" id="Cholesterol" name="Cholesterol">
+
+            <label for="FastingBS">Fasting Blood Sugar:</label>
+            <select id="FastingBS" name="FastingBS">
+                <option value="1">True</option>
+                <option value="0">False</option>
+            </select>
+
+            <label for="MaxHR">Max Heart Rate:</label>
+            <input type="text" id="MaxHR" name="MaxHR">
+
+            <label for="ExerciseAngina">Exercise-Induced Angina:</label>
+            <select id="ExerciseAngina" name="ExerciseAngina">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select>
+
+            <label for="Oldpeak">Oldpeak:</label>
+            <input type="text" id="Oldpeak" name="Oldpeak">
+
+            <label for="ST_Slope">ST Slope:</label>
+            <select id="ST_Slope" name="ST_Slope">
+                <option value="Up">Upsloping</option>
+                <option value="Flat">Flat</option>
+                <option value="Down">Downsloping</option>
+            </select>
+        </div>
+    
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+
+    <div class="context">
+        <h1>심부전 예측</h1>
+
+        <li>머신러닝을 활용한 심부전 예측 사이트입니다.</li>
+        <li>검사 결과를 입력하고 간편하게 예측 결과를 받아보세요.</li>
+    </div>
+
+</main>

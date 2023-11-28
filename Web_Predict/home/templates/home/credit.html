@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% csrf_token %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>심부전 예측 사이트</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 35px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        color: black;
+        background: #ffffff;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-family: 'Noto Sans KR', sans-serif;
+        margin-bottom: 20px; /* 메뉴바 아래 여백 추가 */
+        z-index: 1; /* 다른 요소 위에 표시 */
+        border-bottom: 1px solid #ddd; /* 하단 구분선 추가 */
+    }
+
+    /* 왼쪽 텍스트 스타일 */
+    .left {
+        font-size: 20px; /* 원하는 크기로 조정하세요 */
+        padding-left: 60px;
+    }
+
+    .left a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: color 0.3s; /* color 속성에만 transition 추가 */
+    }
+
+    .left a:hover {
+        color: #333; /* 호버 효과 스타일 설정 */
+    }
+
+    /* 오른쪽 메뉴 스타일 */
+    .right ul {
+        list-style: none;
+        padding: 0;
+        margin-right: 40px;
+        display: flex;
+    }
+
+    .right li {
+        margin-right: 20px; /* 각 메뉴 항목 사이의 간격 조정 */
+    }
+
+    .right a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: color 0.3s; /* color 속성에만 transition 추가 */
+    }
+
+    .right a:hover {
+        color: #333; /* 호버 효과 스타일 설정 */
+    }
+
+    main {
+        padding-top: 70px;
+        padding-left: 60px;
+    }
+
+    .context{
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .context li{
+        list-style-type: none;
+    }
+
+    .input-section {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .input-section label {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .input-section select,
+    .input-section input {
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 12px;
+        width: 150px; /* 원하는 크기로 조정하세요 */
+    }
+
+    #submit-btn {
+        padding: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #submit-btn:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
+<header>
+    <div class="left">
+        <a href="/home/">심부전 예측 사이트</a>
+    </div>
+    <div class="right">
+        <ul>
+            <li><a href="/home/credit/">크레딧</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+
+    <div class="context">
+        <h1>크레딧</h1>
+        
+        <li>기계학습기초 3분반 조별과제입니다.</li>
+        <li>이진우, 전승민, 이진우, 김동겸 조 제작</li>
+    </div>
+
+</main>
